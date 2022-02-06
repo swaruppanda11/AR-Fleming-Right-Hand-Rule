@@ -12,21 +12,23 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width:100%;
+    width:100vw;
+    height:100vh;
 }
 .toggle_landmarks_button{
     /* size the button to be big and have a blue color and rounded corners */
     width: 16vw;
-    height: 5vh;
-    background-color: rgba(255, 0, 55, 0.479);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 31, 168, 0.37);
-    color: rgba(255, 255, 255, 0.794);
+    /* height: 5vh; */
+    background-color: rgba(255, 0, 69, 0.5);
+    border-radius: 30px;
+    border: none ; 
+    /* 1px solid rgba(255, 0, 55, 0.479); */
+    color: rgba(255, 255, 255, 0.623);
     font-size: 20px;
     font-weight: bold;
     text-align: center;
     vertical-align: middle;
-    padding-top: 5px;
+    padding: 8px;
     margin-top: 10px;
     margin-left: 10px;
     cursor: pointer;
@@ -35,7 +37,8 @@ body {
     transition: 300ms;
 }
 .toggle_landmarks_button:hover{
-    background-color: rgba(76, 0, 255, 0.39);
+    background-color: rgba(69, 0, 255, 0.7);
+    /* border: 1px solid rgba(76, 0, 255, 0.39); */
     color: rgb(255,255,255);
 }
 
