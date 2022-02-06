@@ -3,12 +3,40 @@ body {
     margin : 0;
     padding: 0 ; 
 }
-canvas{
+/* canvas{
     position: absolute;
     top: 0;
     left: 0;   
+} */
+.output_canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
 }
 .toggle_landmarks_button{
+    /* size the button to be big and have a blue color and rounded corners */
+    width: 16vw;
+    height: 5vh;
+    background-color: rgba(255, 0, 55, 0.479);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 31, 168, 0.37);
+    color: rgba(255, 255, 255, 0.794);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
     position: relative;
     z-index: 3; 
+    transition: 300ms;
 }
+.toggle_landmarks_button:hover{
+    background-color: rgba(76, 0, 255, 0.39);
+    color: rgb(255,255,255);
+}
+
+ 
