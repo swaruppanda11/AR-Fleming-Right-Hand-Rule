@@ -17,7 +17,8 @@ function onResults(results) {
     videoWH = videoElement.videoWidth / videoElement.videoHeight;
     videoElement.width = window.innerWidth;
     p5jscanvas.position(videoElement.offsetLeft - videoElement.offsetWidth / 2, videoElement.offsetTop - videoElement.offsetHeight / 2);
-    monapple.resizeCanvas(videoElement.width, videoElement.videoHeight*videoElement.width/videoElement.videoWidth);    // mon
+    // monapple.resizeCanvas(videoElement.width, videoElement.videoHeight*videoElement.width/videoElement.videoWidth);    // mon
+    monapple.resizeCanvas(videoElement.offsetWidth, videoElement.offsetHeight);
   }
   detections = results;
   // canvasCtx.save();
