@@ -7,7 +7,7 @@ let godhands = [];
 let zoomscale = 1;
 let videopointer;
 let slider_resolution;
-let show_markers = true;
+let show_markers = false;
 let sketch = function (p) {
     p.setup = function () {
         p5jscanvas = p.createCanvas(640, 480);
@@ -19,7 +19,7 @@ let sketch = function (p) {
         p.frameRate(155);
     }
     p.draw = function () {
-        // p.clear();
+        p.clear();
         if (detections != undefined) {
             if (detections.multiHandLandmarks != undefined) {
                 if (detections.multiHandLandmarks.length < godhands.length)

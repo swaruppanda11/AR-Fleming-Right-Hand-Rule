@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
@@ -8,7 +9,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  
+  <script defer language="javascript" type="text/javascript" src="additionalfunctions.js"></script>
+
   <script defer language="javascript" type="text/javascript" src="detection.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,6 +22,41 @@
     <video class="input_video"></video>
     <!-- <canvas class="output_canvas"></canvas> -->
   </div>
-  <button class="toggle_landmarks_button" onclick="display_landmarks=!display_landmarks;">Toggle Landmarks</button>
+  <div class="settings">
+    <div class="camera_settings">
+      <button class="toggle_button" onclick="changeCamera();">Change Camera</button>
+      <button class="toggle_button" onclick="flipCamera();">Flip Camera</button>
+      <br>
+      <div class="camera_settings">Resolution Scale :<input type="range" min="1" max="100" value="50" class="slider"
+          id="myRange">
+      </div>
+    </div>
+    <div class="toggle_settings">
+      <button id="button_togglelandmarks" class="toggle_button" onclick="toggleLandmarks();">Show Markers</button>
+      <br>
+      <button id="button_togglelandmarks" class="toggle_button" onclick="toggleAnimation();">Animate</button>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Maxwell's Right Hand Thumb Rule</h1>
+    <p>An interactive Demonstration for how the flow of current is related to the magnetic field formed. <br>Show your
+      hands on the camera and curl your fingers to view how the rule works! <br>Be in a well lit environment and enable
+      marker display to check if hands are being detected properly, and adjust the curl detection threshold to your
+      liking. <br>
+      <img class="ruleimage" src="rule.png" alt="">
+      <br>The Maxwell's right hand thumb rule states that "When the conductor is held in your right hand,
+      such that the direction of the thumb points the direction of the current and the curled finger gives the direction
+      of the magnetic finger."
+    </p>
+    <br><br>
+    Preview
+    <br><br>
+
+    <img class="previewimage" src="preview.jpg" alt="" height="850px">
+  </div>
+  <footer>
+    <img src="collegelogo.png" alt="" height="100px">
+  </footer>
 </body>
+
 </html>
