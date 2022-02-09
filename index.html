@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script defer language="javascript" type="text/javascript" src="additionaladditions.js"></script>
   <script defer language="javascript" type="text/javascript" src="additionalfunctions.js"></script>
 
   <script defer language="javascript" type="text/javascript" src="detection.js"></script>
@@ -16,6 +17,7 @@
 </head>
 
 <body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="cp.js"></script>
   <script src="sketch.js"></script>
   <div class="container">
@@ -27,14 +29,18 @@
       <button class="toggle_button" onclick="changeCamera();">Change Camera</button>
       <button class="toggle_button" onclick="flipCamera();">Flip Camera</button>
       <br>
-      <div class="camera_settings">Resolution Scale :<input type="range" min="1" max="100" value="50" class="slider"
-          id="myRange">
-      </div>
+      <div class="camera_settings">Resolution Modifier :
+        <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeRes()">
+      </div><br>
+      
     </div>
     <div class="toggle_settings">
       <button id="button_togglelandmarks" class="toggle_button" onclick="toggleLandmarks();">Show Markers</button>
       <br>
       <button id="button_togglelandmarks" class="toggle_button" onclick="toggleAnimation();">Animate</button>
+      <div>Curl Detection Thrushold :
+        <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
+      </div>
     </div>
   </div>
   <div class="content">
@@ -53,6 +59,8 @@
     <br><br>
 
     <img class="previewimage" src="preview.jpg" alt="" height="850px">
+    <br><br>
+    <p>An AR Demonstration by</p>
   </div>
   <footer>
     <img src="collegelogo.png" alt="" height="100px">

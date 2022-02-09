@@ -36,3 +36,10 @@ toggleLandmarks();
 function toggleAnimation(){
     
 } 
+
+function sliderChangeCurl() { 
+
+}
+function sliderChangeRes() { 
+  
+}
