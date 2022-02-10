@@ -102,8 +102,8 @@ body::-webkit-scrollbar-thumb {
 
 .content {
     text-align: center;
-    color: rgb(255, 255, 255);
-    font-size: 2rem;
+    color: rgb(200, 200, 200);
+    font-size: 1.3rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -201,5 +201,9 @@ footer{
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-top: 8px solid #3f51b5;
-    font-family: Roboto Slab
+    font-family: Roboto Slab;
   }
+.slider_text{
+  font-size: 1.1rem;
+  color:rgb(212, 212, 212)
+}
