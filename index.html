@@ -21,7 +21,7 @@
   <script src="cp.js"></script>
   <script src="sketch.js"></script>
   <div class="container">
-    <video class="input_video"></video>
+    <video class="input_video" style="display:none"></video>
     <!-- <canvas class="output_canvas"></canvas> -->
   </div>
   <div class="settings">
@@ -39,6 +39,9 @@
       <br>
       <button id="button_togglelandmarks" class="toggle_button" onclick="toggleAnimation();">Animate</button>
       <div class="slider_text">Curl Detection Thrushold :
+        <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
+      </div>
+      <div class="slider_text">Current flow :
         <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
       </div>
     </div>
@@ -63,7 +66,10 @@
     <p>An AR Demonstration by</p>
   </div>
   <footer>
+    <img class="corner corner_left" src="corner.png" alt="" height="100px">
     <img src="collegelogo.png" alt="" height="100px">
+    <img class="corner corner_right" src="corner.png" alt="" height="100px">
+
   </footer>
 </body>
 
