@@ -19,7 +19,7 @@
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="cp.js"></script>
-  <script src="sketch.js"></script>
+  <!-- <script src="sketch.js"></script> -->
   <div class="container">
     <video class="input_video" style="display:none"></video>
     <!-- <canvas class="output_canvas"></canvas> -->
@@ -28,21 +28,24 @@
     <div class="camera_settings">
       <button class="toggle_button" onclick="changeCamera();">Change Camera</button>
       <button class="toggle_button" onclick="flipCamera();">Flip Camera</button>
-      <br>
+      <br><br>
       <div class="camera_settings slider_text">Resolution Modifier :
         <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeRes()">
       </div><br>
-      
+
     </div>
-    <div class="toggle_settings">
-      <button id="button_togglelandmarks" class="toggle_button" onclick="toggleLandmarks();">Show Markers</button>
-      <br>
-      <button id="button_togglelandmarks" class="toggle_button" onclick="toggleAnimation();">Animate</button>
-      <div class="slider_text">Curl Detection Thrushold :
-        <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
-      </div>
-      <div class="slider_text">Current flow :
-        <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
+    <div>
+
+      <div class="toggle_settings">
+        <button id="button_togglelandmarks" class="toggle_button" onclick="toggleLandmarks();">Show Markers</button>
+        <br>
+        <button id="button_togglelandmarks" class="toggle_button" onclick="toggleAnimation();">Animate</button>
+        <div class="slider_text">Curl Detection Thrushold :
+          <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
+        </div>
+        <div class="slider_text">Current flow :
+          <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +61,10 @@
       of the magnetic finger."
     </p>
     <br><br>
-    Preview
+    <h1>
+      Preview
+    </h1>
+    
     <br><br>
 
     <img class="previewimage" src="preview.jpg" alt="" height="850px">
