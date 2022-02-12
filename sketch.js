@@ -4,7 +4,7 @@ let ready = false;
 let setting_size = true;
 let a;
 let godhands = [];
-let zoomscale = 1;
+let zoomscale = 2;
 let videopointer;
 let slider_resolution;
 let show_markers = false;
