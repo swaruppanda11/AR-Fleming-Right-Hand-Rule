@@ -19,7 +19,18 @@ videoElement.addEventListener('loadedmetadata', (event) => {
 
 function changeCamera(){
   videoface = videoface==="environment"?"user":"environment";
-  camera.facingMode = videoface;
+  videoElement.pause();
+  videoElement.srcObject = null;
+  camera = null ; 
+  camera = new Camera(videoElement, {
+    onFrame: async () => {
+      // await hands.send({ image: videoElement });
+    },
+    width: 1280,
+    height: 720,
+    facingMode: videoface
+  });
+  camera.start();
 }
 
 function flipCamera() {
