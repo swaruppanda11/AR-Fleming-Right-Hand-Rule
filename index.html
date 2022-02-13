@@ -41,19 +41,18 @@
     <div>
 
       <div class="toggle_settings">
-        <button id="button_togglelandmarks" class="toggle_button" onclick="toggleLandmarks();">Show Markers</button>
+        <button id="button_togglelandmarks" class="toggle_button" onclick="toggleLandmarks();"></button>
         <br>
-        <button id="button_togglelandmarks" class="toggle_button" onclick="toggleAnimation();">Disable Current
-          Flow</button><br><br>
+        <button id="button_toggleanimation" class="toggle_button" onclick="toggleAnimation();"></button><br><br>
         <div class="slider_text">Curl Detection Thrushold :
-          <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
+          <input id="slider_curl" class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
         </div>
         <div class="slider_text">Current flow :
           <input class="clicked" type="range" min="0" max="100" value="100" oninput="sliderChangeCurl()">
         </div>
       </div>
     </div>
-  </div>s
+  </div>
   <div class="content">
     <h1>Maxwell's Right Hand Thumb Rule</h1>
     <p>An interactive Demonstration for how the flow of current is related to the magnetic field formed. <br>Show your

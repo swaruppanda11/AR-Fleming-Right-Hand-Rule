@@ -8,9 +8,12 @@ let zoomscale = 2;
 let videopointer;
 let slider_resolution;
 let show_markers = false;
+let animation_working = true;
+let videoface = "environment";
+let curl_thrushold = 0.4; 
 let sketch = function (p) {
     p.setup = function () {
-        p5jscanvas = p.createCanvas(640, 480);
+        p5jscanvas = p.createCanvas(640, 480,p.WEBGL);
         p.pixelDensity(1);
         p.fill(255, 0, 69);
         p.stroke(255, 0, 69);
@@ -20,6 +23,7 @@ let sketch = function (p) {
     }
     p.draw = function () {
         p.clear();
+        p.translate(-p.width/2,-p.height/2);
         if (detections != undefined) {
             if (detections.multiHandLandmarks != undefined) {
                 if (detections.multiHandLandmarks.length < godhands.length)
@@ -36,7 +40,7 @@ let sketch = function (p) {
             godhands[i].work();
         }
         if (show_markers) {
-            p.textAlign(p.BOTTOM, p.RIGHT);
+            // p.textAlign(p.BOTTOM, p.RIGHT);
             // p.text("Marker Display ON", 0 , p.height - 5);
         }
     }

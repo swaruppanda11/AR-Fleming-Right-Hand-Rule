@@ -1,13 +1,13 @@
 class Custompoint {
-  constructor(x, y) {
+  constructor(x, y, z) {
     this.purex = this.x = x;
     this.purey = this.y = y;
-    // this.purez = this.z = z;
+    this.purez = this.z = z;
   }
-  seekpos(x, y) {
+  seekpos(x, y, z) {
     this.purex = x;
     this.purey = y;
-    // this.purez = z;
+    this.purez = z;
   }
   display() {
     // monapple.circle(this.x, this.y, 14);
@@ -19,29 +19,44 @@ class Custompoint {
   work() {
     this.x = monapple.lerp(this.x, this.purex, Lerpspeed);
     this.y = monapple.lerp(this.y, this.purey, Lerpspeed);
-    // this.z = monapple.lerp(this.z, this.purez, Lerpspeed);
+    this.z = monapple.lerp(this.z, this.purez, Lerpspeed);
   }
 }
 let Lerpspeed = 0.7;
 class Customhand {
   constructor(handpoints) {
     this.points = [];
-    for (let i = 0; i < handpoints.length; ++i) {
+    this.avgpoint = new Custompoint(0, 0);
+    let i = 0;
+    for (; i < handpoints.length; ++i) {
       this.addpoint(
         handpoints[i].x * monapple.width,
         handpoints[i].y * monapple.height,
-        // -handpoints[i].z * monapple.width
+        -handpoints[i].z * monapple.width
       );
+      this.avgpoint.x += this.points[i].x;
+      this.avgpoint.y += this.points[i].y;
+      this.avgpoint.z += this.points[i].z;
     }
+    this.avgpoint.x /= i;
+    this.avgpoint.y /= i;
+    this.avgpoint.z /= i;
   }
   seekhands(handpoints) {
-    for (let i = 0; i < handpoints.length; ++i) {
+    let i = 0;
+    for (; i < handpoints.length; ++i) {
       this.points[i].seekpos(
         handpoints[i].x * monapple.width,
         handpoints[i].y * monapple.height,
-        // -handpoints[i].z * monapple.width
+        -handpoints[i].z * monapple.width
       );
+      this.avgpoint.x += this.points[i].x;
+      this.avgpoint.y += this.points[i].y;
+      this.avgpoint.z += this.points[i].z;
     }
+    this.avgpoint.x /= i;
+    this.avgpoint.y /= i;
+    this.avgpoint.z /= i;
   }
   addpoint(x, y, z) {
     this.points.push(new Custompoint(x, y, z));
@@ -88,5 +103,27 @@ class Customhand {
         // monapple.text(i, this.points[i].x, this.points[i].y);
       }
     }
+    if (
+      monapple.dist(
+        this.avgpoint.x,
+        this.avgpoint.y,
+        // this.avgpoint.z,
+        this.points[0].x,
+        this.points[0].y,
+        // this.points[0].z
+      ) <
+      curl_thrushold*monapple.dist(
+        this.points[0].x,
+        this.points[0].y,
+        // this.points[0].z,
+        this.points[17].x,
+        this.points[17].y,
+        // this.points[17].z
+      )
+    ){
+      
+    }
+    // monapple.stroke(0, 0, 255);
+    // this.avgpoint.display();
   }
 }
