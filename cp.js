@@ -140,14 +140,20 @@ class Customhand {
       )
     ) {
     }
+    monapple.push(); 
     this.display_field();
+    monapple.pop(); 
     // monapple.stroke(0, 0, 255);
     // this.avgpoint.display();
   }
   display_field() {
+    let v0 = monapple.createVector(this.points[5].x, this.points[5].y,0);
+    let v1 = monapple.createVector(this.points[17].x, this.points[17].y,0);
+    
     let r = 100;
     let d = r / 5;
-    let thetaZ = PI / 2;
+    let thetaZ = PI/2 - v1.angleBetween(v0);
+    // console.log(thetaZ);
     let thetaY = 0;
     let thetaX = monapple.frameCount / 100; //map( mouseX , 0 , width , PI/2 , PI+PI/2) ;
     let x = this.points[5].x;
@@ -157,13 +163,13 @@ class Customhand {
     // let dx = cos(theta)*r ;
     // let dy = sin(theta)*r ;
     monapple.translate(x, y);
-    monapple.orbitControl();
     monapple.fill(200);
     monapple.text("I", 0, -r, 0);
     monapple.text("B", -r - 5, 0, 0);
     monapple.rotateZ(thetaZ);
     monapple.rotateY(thetaY);
     monapple.rotateX(thetaX);
+    monapple.stroke(200); 
     monapple.line(r, 0, 0, d - r, 0, 0);
     monapple.push();
     monapple.rotateZ(PI / 2);
