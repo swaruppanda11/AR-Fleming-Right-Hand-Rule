@@ -23,3 +23,13 @@ let camera = new Camera(videoElement, {
   facingMode: "environment"
 });
 camera.start();
+
+
+let PI = 3.141592;
+let TWO_PI = 2*PI ; 
+function cos(x){
+  return Math.cos(x);
+}
+function sin(x){
+  return Math.sin(x);
+}

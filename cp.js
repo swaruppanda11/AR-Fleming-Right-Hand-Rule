@@ -22,6 +22,25 @@ class Custompoint {
     this.z = monapple.lerp(this.z, this.purez, Lerpspeed);
   }
 }
+/*
+   8| 12|   16   20
+    |   |  |    | 
+   7| 11|  |15  |19
+    |   |  |    |
+   6| 10|  |14  |18
+    |   |  |    |
+   5|__9|__|13_|17
+    |         /
+    |        /
+4   |      /
+3\  |     /
+ 2\ |   /
+  1\|  /
+     0
+
+this is so badly drawn i am ashamed of you
+*/
+
 let Lerpspeed = 0.7;
 class Customhand {
   constructor(handpoints) {
@@ -96,7 +115,6 @@ class Customhand {
       monapple.noStroke();
       for (let i = this.points.length - 1; i > -1; --i) {
         // monapple.stroke(255);
-
         this.points[i].display();
         // monapple.fill(79, 255, 114);
         // monapple.stroke(79, 255, 114);
@@ -112,7 +130,7 @@ class Customhand {
         this.points[0].y,
         // this.points[0].z
       ) <
-      curl_thrushold*monapple.dist(
+      curl_thrushold * monapple.dist(
         this.points[0].x,
         this.points[0].y,
         // this.points[0].z,
@@ -120,10 +138,64 @@ class Customhand {
         this.points[17].y,
         // this.points[17].z
       )
-    ){
-      
+    ) {
     }
+    this.display_field();
     // monapple.stroke(0, 0, 255);
     // this.avgpoint.display();
+  }
+  display_field() {
+    let r = 100;
+    let d = r / 5;
+    let thetaZ = PI / 2;
+    let thetaY = 0;
+    let thetaX = monapple.frameCount / 100; //map( mouseX , 0 , width , PI/2 , PI+PI/2) ;
+    let x = this.points[5].x;
+    let y = this.points[5].y;
+    //   y = height / 2,
+    //   z = width / 2;
+    // let dx = cos(theta)*r ;
+    // let dy = sin(theta)*r ;
+    monapple.translate(x, y);
+    monapple.orbitControl();
+    monapple.fill(200);
+    monapple.text("I", 0, -r, 0);
+    monapple.text("B", -r - 5, 0, 0);
+    monapple.rotateZ(thetaZ);
+    monapple.rotateY(thetaY);
+    monapple.rotateX(thetaX);
+    monapple.line(r, 0, 0, d - r, 0, 0);
+    monapple.push();
+    monapple.rotateZ(PI / 2);
+    monapple.translate(0, ((monapple.frameCount / 2) % d) - r - d, 0);
+    monapple.noStroke();
+    // fill(137,207,240,200);
+    monapple.fill(255, monapple.map((monapple.frameCount / 2) % d, 0, d, 0, 255));
+    for (let i = 0; i < r * 2; i += d) {
+      if (i == d) monapple.fill(255, 250);
+      if (i == r * 2 - d) monapple.fill(255, monapple.map((monapple.frameCount / 2) % d, 0, d, 255, 0));
+      monapple.translate(0, d, 0);
+      monapple.cone(3, 10, 4, 3);
+    }
+    monapple.pop();
+    monapple.noFill();
+    // dx = sin(theta)*100 ;
+    // dy = cos(theta)*100 ;
+    monapple.rotateY(PI / 2);
+    monapple.noStroke();
+    for (let i = r; i < 2 * r; i += r / 5) {
+      monapple.stroke(255 - monapple.map(i, r, 2 * r, 0, 255));
+      monapple.arc(0, 0, i, i, monapple.frameCount / 70 + PI - i / 100, monapple.frameCount / 70 + TWO_PI - i / 100);
+      for (let j = -0.2; j <= TWO_PI - 0.2; j += TWO_PI / 24) {
+        monapple.push();
+        monapple.translate(cos(j + i / 100) * i / 2, sin(j + i / 100) * i / 2, 0);
+        // if(j >= TWO_PI - 0.2 ) {
+        // rotateZ(j+PI/2) ; 
+        // cone(3,10) ; 
+        // }
+        monapple.sphere(1, 5, 5);
+        monapple.pop();
+      }
+    }
   }
 }

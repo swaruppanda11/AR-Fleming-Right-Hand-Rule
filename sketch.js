@@ -10,20 +10,26 @@ let slider_resolution;
 let show_markers = false;
 let animation_working = true;
 let videoface = "environment";
-let curl_thrushold = 0.4; 
+let curl_thrushold = 0.4;
+let text_font;
 let sketch = function (p) {
+    p.preload = function () {
+        text_font = p.loadFont("rockfont.ttf");
+    }
     p.setup = function () {
-        p5jscanvas = p.createCanvas(0,0,p.WEBGL);
+        p5jscanvas = p.createCanvas(0, 0, p.WEBGL);
         p.pixelDensity(1);
         p.fill(255, 0, 69);
         p.stroke(255, 0, 69);
 
         p.textSize(50);
-        p.frameRate(155);
+        p.frameRate(144);
+        p.textFont(text_font);
+        p.textSize(20);
     }
     p.draw = function () {
         p.clear();
-        p.translate(-p.width/2,-p.height/2);
+        p.translate(-p.width / 2, -p.height / 2);
         if (detections != undefined) {
             if (detections.multiHandLandmarks != undefined) {
                 if (detections.multiHandLandmarks.length < godhands.length)

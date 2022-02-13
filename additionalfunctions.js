@@ -14,14 +14,14 @@ videoElement.addEventListener('loadedmetadata', (event) => {
   videoWH = videoElement.videoWidth / videoElement.videoHeight;
   videoElement.width = window.innerWidth;
   // monapple.resizeCanvas(videoElement.width, videoElement.videoHeight*videoElement.width/videoElement.videoWidth);    // mon
-  adjustCanvas() ; 
+  adjustCanvas();
 });
 
-function changeCamera(){
-  videoface = videoface==="environment"?"user":"environment";
+function changeCamera() {
+  videoface = videoface === "environment" ? "user" : "environment";
   videoElement.pause();
   videoElement.srcObject = null;
-  camera = null ; 
+  camera = null;
   camera = new Camera(videoElement, {
     onFrame: async () => {
       // await hands.send({ image: videoElement });
@@ -35,19 +35,19 @@ function changeCamera(){
 
 function flipCamera() {
   camera_rotation = (camera_rotation + 180) % 360;
-  adjustCanvas() ; 
+  adjustCanvas();
 }
 
 function sliderChangeCurl() {
-  curl_thrushold = 0.5 + document_slider_curl.value*1.5 / 100.0;
+  curl_thrushold = 0.5 + document_slider_curl.value * 1.5 / 100.0;
 }
 
 function sliderChangeRes() {
   zoomscale = 1 + document_slider_resolution.value / 25.0;
-  adjustCanvas() ; 
+  adjustCanvas();
 }
 
-function adjustCanvas() { 
+function adjustCanvas() {
   monapple.resizeCanvas(videoElement.offsetWidth / zoomscale, videoElement.offsetHeight / zoomscale);
   p5jscanvas.position(videoElement.offsetLeft + videoElement.offsetWidth / 2 - p5jscanvas.width / 2, videoElement.offsetTop + videoElement.offsetHeight / 2 - p5jscanvas.height / 2);
   // monapple.canvas.style.transform = `scale(${zoomscale})`;
@@ -64,12 +64,12 @@ function adjustCanvas() {
   p5jscanvas.style("oTransform", `scale(${zoomscale}) rotateY(${camera_rotation}deg)`);
 }
 
-(toggleLandmarks = function() {
+(toggleLandmarks = function () {
   show_markers = !show_markers;
   document.getElementById("button_togglelandmarks").innerHTML = show_markers ? "Hide Markers" : "Show Markers";
 })();
 
-(toggleAnimation = function() {
+(toggleAnimation = function () {
   animation_working = !animation_working;
   document.getElementById("button_toggleanimation").innerHTML = animation_working ? "Disable Current Flow" : "Enable Current Flow";
 })();
