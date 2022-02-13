@@ -13,7 +13,7 @@ let videoface = "environment";
 let curl_thrushold = 0.4; 
 let sketch = function (p) {
     p.setup = function () {
-        p5jscanvas = p.createCanvas(640, 480,p.WEBGL);
+        p5jscanvas = p.createCanvas(0,0,p.WEBGL);
         p.pixelDensity(1);
         p.fill(255, 0, 69);
         p.stroke(255, 0, 69);
