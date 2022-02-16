@@ -22,21 +22,23 @@ class Custompoint {
     this.z = monapple.lerp(this.z, this.purez, Lerpspeed);
   }
 }
-/*
-   8| 12|   16   20
-    |   |  |    | 
-   7| 11|  |15  |19
-    |   |  |    |
-   6| 10|  |14  |18
-    |   |  |    |
-   5|__9|__|13_|17
-    |         /
-    |        /
-4   |      /
-3\  |     /
- 2\ |   /
-  1\|  /
-     0
+
+/* This is a figure of a hand, hope you like it Mr copilot!
+          _    _  
+        8|| 12||    16  
+         ||   ||  |\    
+        7|| 11||  ||15 _20
+         ||   ||  ||   \\19
+        6|| 10||  ||14 ||18
+         ||   ||  ||   ||
+        5||__9||__||13/|17
+   4 _   |+++++++++++//
+   3||   |++++++++++//
+     \\  |+++++++++//
+     2\\_|++++++++//
+       \ |+++++++//
+       1\|++++++//|
+         \||0|||||  
 
 this is so badly drawn i am ashamed of you
 */
@@ -140,21 +142,20 @@ class Customhand {
       )
     ) {
     }
-    monapple.push(); 
+    monapple.push();
     this.display_field();
-    monapple.pop(); 
+    monapple.pop();
     // monapple.stroke(0, 0, 255);
     // this.avgpoint.display();
   }
   display_field() {
-    let v0 = monapple.createVector(this.points[5].x, this.points[5].y,0);
-    let v1 = monapple.createVector(this.points[17].x, this.points[17].y,0);
-    
-    let r = 100;
+    // let v0 = monapple.createVector(this.points[5].x, this.points[5].y,0);
+    // let v1 = monapple.createVector(this.points[17].x, this.points[17].y,0);
+    let r = 150;
     let d = r / 5;
-    let thetaZ = PI/2 - v1.angleBetween(v0);
+    let thetaZ = PI + Math.atan2(this.points[5].y - this.points[17].y, this.points[5].x - this.points[17].x);
     // console.log(thetaZ);
-    let thetaY = 0;
+    let thetaY = 0//-PI/2 + Math.atan2( this.points[5].x-this.points[17].x, this.points[5].z-this.points[17].z);
     let thetaX = monapple.frameCount / 100; //map( mouseX , 0 , width , PI/2 , PI+PI/2) ;
     let x = this.points[5].x;
     let y = this.points[5].y;
@@ -164,12 +165,15 @@ class Customhand {
     // let dy = sin(theta)*r ;
     monapple.translate(x, y);
     monapple.fill(200);
-    monapple.text("I", 0, -r, 0);
-    monapple.text("B", -r - 5, 0, 0);
     monapple.rotateZ(thetaZ);
     monapple.rotateY(thetaY);
     monapple.rotateX(thetaX);
-    monapple.stroke(200); 
+    monapple.push();
+    monapple.rotate(-PI/2) ;
+    monapple.text("I", 0, -r, 0);
+    monapple.text("B", -r - 5, 0, 0);
+    monapple.pop();
+    monapple.stroke(200);
     monapple.line(r, 0, 0, d - r, 0, 0);
     monapple.push();
     monapple.rotateZ(PI / 2);
@@ -190,7 +194,7 @@ class Customhand {
     monapple.rotateY(PI / 2);
     monapple.noStroke();
     for (let i = r; i < 2 * r; i += r / 5) {
-      monapple.stroke(255 - monapple.map(i, r, 2 * r, 0, 255));
+      monapple.stroke(255, 255 - monapple.map(i, r, 2 * r, 0, 255));
       monapple.arc(0, 0, i, i, monapple.frameCount / 70 + PI - i / 100, monapple.frameCount / 70 + TWO_PI - i / 100);
       for (let j = -0.2; j <= TWO_PI - 0.2; j += TWO_PI / 24) {
         monapple.push();
@@ -204,4 +208,9 @@ class Customhand {
       }
     }
   }
+}
+
+function get_angle(x1, y1, x2, y2) {
+  let angle = Math.atan2((y1 - y2), (x1 - x2));
+  return angle;
 }
