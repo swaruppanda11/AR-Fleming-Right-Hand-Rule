@@ -110,6 +110,13 @@ body::-webkit-scrollbar-thumb {
   color: rgb(255, 255, 255);
 }
 
+.quiz_button { 
+  font-size: 50px;
+  /* make the text bold */
+  font-weight: bold;
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
 .camera_settings {
   float: right;
 }
