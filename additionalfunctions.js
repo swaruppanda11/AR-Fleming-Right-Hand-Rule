@@ -63,6 +63,7 @@ function adjustCanvas() {
   p5jscanvas.style("msTransform", `scale(${zoomscale}) rotateY(${camera_rotation}deg)`);
   p5jscanvas.style("oTransform", `scale(${zoomscale}) rotateY(${camera_rotation}deg)`);
 }
+setTimeout(adjustCanvas, 1000);
 
 (toggleLandmarks = function () {
   show_markers = !show_markers;

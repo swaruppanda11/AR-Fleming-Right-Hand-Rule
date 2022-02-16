@@ -1,5 +1,5 @@
 .quiz_choice{
-    margin: 150px;
+    margin: 130px;
     /* dark blue border */
     border: solid 2px #006699;
     /* padding */
@@ -10,7 +10,7 @@
     border-radius: 20px;
     transition : 500ms;
     /* scale it down a bit */
-    transform: scale(2.2);    
+    transform: scale(2);    
 
 }
 /* mouse over effect make border transition thicker */
