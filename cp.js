@@ -1,3 +1,5 @@
+let Lerpspeed = 0.7;
+function get_angle(x1, y1, x2, y2) { return Math.atan2((y1 - y2), (x1 - x2)); }
 class Custompoint {
   constructor(x, y, z) {
     this.purex = this.x = x;
@@ -9,12 +11,8 @@ class Custompoint {
     this.purey = y;
     this.purez = z;
   }
-  display() {
-    // monapple.circle(this.x, this.y, 14);
-    // monapple.push() ; 
-    // monapple.translate(this.x,this.y,this.z) ; 
+  display() {// 3d push pop monapple.translate(this.x,this.y,this.z) ; 
     monapple.circle(this.x, this.y, 14);
-    // monapple.pop() ; 
   }
   work() {
     this.x = monapple.lerp(this.x, this.purex, Lerpspeed);
@@ -22,7 +20,6 @@ class Custompoint {
     this.z = monapple.lerp(this.z, this.purez, Lerpspeed);
   }
 }
-
 /* This is a figure of a hand, hope you like it Mr copilot!
           _    _  
         8|| 12||    16  
@@ -39,37 +36,28 @@ class Custompoint {
        \+|+++++++//
        1\|++++++//|
          \||0|||||  
-
-this is so badly drawn i am ashamed of you
-*/
-
-let Lerpspeed = 0.7;
+this is so badly drawn i am ashamed of you*/
 class Customhand {
   constructor(handpoints) {
-    this.points = [];
     this.avgpoint = new Custompoint(0, 0);
-    let i = 0;
-    for (; i < handpoints.length; ++i) {
+    this.points = [];
+    let i = 0; for (; i < handpoints.length; ++i) {
       this.addpoint(
         handpoints[i].x * monapple.width,
         handpoints[i].y * monapple.height,
-        -handpoints[i].z * monapple.width
+        handpoints[i].z * monapple.width
       );
-      this.avgpoint.x += this.points[i].x;
-      this.avgpoint.y += this.points[i].y;
-      this.avgpoint.z += this.points[i].z;
     }
     this.avgpoint.x /= i;
     this.avgpoint.y /= i;
     this.avgpoint.z /= i;
   }
   seekhands(handpoints) {
-    let i = 0;
-    for (; i < handpoints.length; ++i) {
+    let i = 0; for (; i < handpoints.length; ++i) {
       this.points[i].seekpos(
         handpoints[i].x * monapple.width,
         handpoints[i].y * monapple.height,
-        -handpoints[i].z * monapple.width
+        handpoints[i].z * monapple.width
       );
       this.avgpoint.x += this.points[i].x;
       this.avgpoint.y += this.points[i].y;
@@ -81,6 +69,9 @@ class Customhand {
   }
   addpoint(x, y, z) {
     this.points.push(new Custompoint(x, y, z));
+    this.avgpoint.x += x;
+    this.avgpoint.y += y;
+    this.avgpoint.z += z;
   }
   display_skeleton() {
     this.drawLines([0, 5, 9, 13, 17, 0]); //palm
@@ -95,19 +86,15 @@ class Customhand {
       let x = this.points[index[j]].x;
       let y = this.points[index[j]].y;
       // let z = this.points[index[j]].z;
-
       let _x = this.points[index[j + 1]].x;
       let _y = this.points[index[j + 1]].y;
       // let _z = this.points[index[j+1]].z;
       // monapple.line(x, y,z, _x, _y,_z);
       monapple.line(x, y, _x, _y);
-
     }
   }
   work() {
-    for (let i = this.points.length - 1; i > -1; --i) {
-      this.points[i].work();
-    }
+    for (let i = this.points.length - 1; i > -1; --i) this.points[i].work();
     if (show_markers) {
       monapple.stroke(255);
       monapple.strokeWeight(3);
@@ -149,12 +136,9 @@ class Customhand {
     // this.avgpoint.display();
   }
   display_field() {
-    // let v0 = monapple.createVector(this.points[5].x, this.points[5].y,0);
-    // let v1 = monapple.createVector(this.points[17].x, this.points[17].y,0);
     let r = 150;
     let d = r / 5;
     let thetaZ = PI + Math.atan2(this.points[5].y - this.points[17].y, this.points[5].x - this.points[17].x);
-    // console.log(thetaZ);
     let thetaY = 0//-PI/2 + Math.atan2( this.points[5].x-this.points[17].x, this.points[5].z-this.points[17].z);
     let thetaX = monapple.frameCount / 100; //map( mouseX , 0 , width , PI/2 , PI+PI/2) ;
     let x = this.points[5].x;
@@ -169,7 +153,7 @@ class Customhand {
     monapple.rotateY(thetaY);
     monapple.rotateX(thetaX);
     monapple.push();
-    monapple.rotate(-PI/2) ;
+    monapple.rotate(-PI / 2);
     monapple.text("I", 0, -r, 0);
     monapple.text("B", -r - 5, 0, 0);
     monapple.pop();
@@ -208,9 +192,4 @@ class Customhand {
       }
     }
   }
-}
-
-function get_angle(x1, y1, x2, y2) {
-  let angle = Math.atan2((y1 - y2), (x1 - x2));
-  return angle;
 }

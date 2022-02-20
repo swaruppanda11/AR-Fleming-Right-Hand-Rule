@@ -4,14 +4,10 @@ function display_field(p) {
     let r = 80;
     let d = r / 5;
     let thetaX = p.frameCount / 100; //map( mouseX , 0 , width , PI/2 , PI+PI/2) ;
-    let x = 0;//this.points[5].x;
-    let y = 0;//this.points[5].y;
-    //   y = height / 2,
-    //   z = width / 2;
     // let dx = cos(theta)*r ;
     // let dy = sin(theta)*r ;
     p.push();
-    p.translate(x, y);
+    p.translate(0, 0);
     p.rotateZ(thetaZ + p.offz);
     p.rotateY(thetaY + p.offy);
     p.rotateX(thetaX * p.offx);
