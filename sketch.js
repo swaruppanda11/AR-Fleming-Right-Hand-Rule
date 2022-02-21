@@ -12,12 +12,14 @@ let animation_working = true;
 let videoface = "environment";
 let curl_thrushold = 0.4;
 let text_font;
+p5.disableFriendlyErrors = false;
 let sketch = function (p) {
     p.preload = function () {
         text_font = p.loadFont("rockfont.ttf");
     }
     p.setup = function () {
         p5jscanvas = p.createCanvas(0, 0, p.WEBGL);
+        p.cam = p.createCamera();
         p.pixelDensity(1);
         p.fill(255, 0, 69);
         p.stroke(255, 0, 69);
@@ -28,6 +30,7 @@ let sketch = function (p) {
         p.textSize(20);
     }
     p.draw = function () {
+        flow_time += flow_time_delta;
         p.clear();
         p.translate(-p.width / 2, -p.height / 2);
         if (detections != undefined) {

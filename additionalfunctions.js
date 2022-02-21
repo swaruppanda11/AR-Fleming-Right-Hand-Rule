@@ -1,6 +1,7 @@
 const videoElement = document.getElementsByClassName('input_video')[0];
 const document_slider_resolution = document.getElementById("slider_resolution");
 const document_slider_curl = document.getElementById("slider_curl");
+const document_slider_mag = document.getElementById("slider_mag");
 let toggleLandmarks, toggleAnimation;//, sliderChangeCurl, sliderChangeRes;
 let display_landmarks = false;
 let first_time_setup = true;
@@ -41,11 +42,18 @@ function flipCamera() {
 function sliderChangeCurl() {
   curl_thrushold = 0.5 + document_slider_curl.value * 1.5 / 100.0;
 }
+setTimeout(sliderChangeCurl,500); 
 
 function sliderChangeRes() {
-  zoomscale = 1 + document_slider_resolution.value / 25.0;
+  zoomscale = 1 + document_slider_resolution.value / 10.0;
   adjustCanvas();
 }
+setTimeout(sliderChangeRes,1000); 
+
+function sliderChangeMag(){
+  flow_time_delta = document_slider_mag.value / 1000.0;
+}
+setTimeout(sliderChangeMag,500); 
 
 function adjustCanvas() {
   monapple.resizeCanvas(videoElement.offsetWidth / zoomscale, videoElement.offsetHeight / zoomscale);
@@ -62,8 +70,9 @@ function adjustCanvas() {
   p5jscanvas.style("mozTransform", `scale(${zoomscale}) rotateY(${camera_rotation}deg)`);
   p5jscanvas.style("msTransform", `scale(${zoomscale}) rotateY(${camera_rotation}deg)`);
   p5jscanvas.style("oTransform", `scale(${zoomscale}) rotateY(${camera_rotation}deg)`);
+  
+  // monapple.cam.ortho(-monapple.width / 2, monapple.width / 2, -monapple.height / 2, monapple.height / 2, 0, 500);
 }
-setTimeout(adjustCanvas, 1000);
 
 (toggleLandmarks = function () {
   show_markers = !show_markers;

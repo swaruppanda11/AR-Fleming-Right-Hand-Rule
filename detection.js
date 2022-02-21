@@ -1,7 +1,5 @@
 let detections = [];
-function onResults(results) {
-  detections = results;
-}
+function onResults(results) { detections = results; }
 const hands = new Hands({
   locateFile: (file) => {
     return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
@@ -20,16 +18,13 @@ let camera = new Camera(videoElement, {
   },
   width: 1280,
   height: 720,
-  facingMode: "environment"
+  facingMode: "user"
 });
 camera.start();
-
+setTimeout(flipCamera, 1000);
 
 let PI = 3.141592;
 let TWO_PI = 2*PI ; 
-function cos(x){
-  return Math.cos(x);
-}
-function sin(x){
-  return Math.sin(x);
-}
+function cos(x){return Math.cos(x);}
+function sin(x){return Math.sin(x);}
+function abs(x){return Math.abs(x);}
