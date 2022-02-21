@@ -33,6 +33,7 @@ function changeCamera() {
   });
   camera.start();
 }
+setTimeout(changeCamera,500);
 
 function flipCamera() {
   camera_rotation = (camera_rotation + 180) % 360;

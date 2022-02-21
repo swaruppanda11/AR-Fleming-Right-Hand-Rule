@@ -22,7 +22,6 @@ let camera = new Camera(videoElement, {
   facingMode: videoface
 });
 camera.start();
-setTimeout(flipCamera, 1000);
 
 let PI = 3.141592;
 let TWO_PI = 2*PI ; 
