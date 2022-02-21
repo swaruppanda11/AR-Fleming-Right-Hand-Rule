@@ -9,16 +9,16 @@ let videopointer;
 let slider_resolution;
 let show_markers = false;
 let animation_working = true;
-let videoface = "environment";
 let curl_thrushold = 0.4;
 let text_font;
-p5.disableFriendlyErrors = false;
+// p5.disableFriendlyErrors = true;
 let sketch = function (p) {
     p.preload = function () {
         text_font = p.loadFont("rockfont.ttf");
     }
     p.setup = function () {
         p5jscanvas = p.createCanvas(0, 0, p.WEBGL);
+        p.disableFriendlyErrors = true; 
         p.cam = p.createCamera();
         p.pixelDensity(1);
         p.fill(255, 0, 69);

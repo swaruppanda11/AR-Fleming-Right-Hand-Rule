@@ -1,4 +1,5 @@
 let detections = [];
+let videoface = "user";
 function onResults(results) { detections = results; }
 const hands = new Hands({
   locateFile: (file) => {
@@ -18,7 +19,7 @@ let camera = new Camera(videoElement, {
   },
   width: 1280,
   height: 720,
-  facingMode: "user"
+  facingMode: videoface
 });
 camera.start();
 setTimeout(flipCamera, 1000);
