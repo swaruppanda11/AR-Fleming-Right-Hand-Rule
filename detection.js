@@ -1,5 +1,5 @@
 let detections = [];
-let videoface = "user";
+let videoface = "environment";
 function onResults(results) { detections = results; }
 const hands = new Hands({
   locateFile: (file) => {

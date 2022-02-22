@@ -33,7 +33,7 @@ function changeCamera() {
   });
   camera.start();
 }
-setTimeout(changeCamera,1500);
+// setTimeout(changeCamera,1500);
 
 function flipCamera() {
   camera_rotation = (camera_rotation + 180) % 360;
@@ -74,7 +74,7 @@ function adjustCanvas() {
   
   // monapple.cam.ortho(-monapple.width / 2, monapple.width / 2, -monapple.height / 2, monapple.height / 2, 0, 500);
 }
-
+setTimeout(adjustCanvas,1200);
 (toggleLandmarks = function () {
   show_markers = !show_markers;
   document.getElementById("button_togglelandmarks").innerHTML = show_markers ? "Hide Markers" : "Show Markers";
