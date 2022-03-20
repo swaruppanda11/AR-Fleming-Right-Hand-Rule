@@ -46,7 +46,8 @@ function sliderChangeCurl() {
 setTimeout(sliderChangeCurl,500); 
 
 function sliderChangeRes() {
-  let z = iOS() ? 2.0 : 10.0 ; 
+  let z = 10.0;
+  if(iOS()) z = 1.0;
   zoomscale = 1 + document_slider_resolution.value / z;
   console.log(zoomscale);
   adjustCanvas();
