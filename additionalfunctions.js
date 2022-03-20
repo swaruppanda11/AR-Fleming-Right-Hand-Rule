@@ -46,7 +46,9 @@ function sliderChangeCurl() {
 setTimeout(sliderChangeCurl,500); 
 
 function sliderChangeRes() {
-  zoomscale = 1 + document_slider_resolution.value / 10.0;
+  let z = iOS() ? 2.0 : 10.0 ; 
+  zoomscale = 1 + document_slider_resolution.value / z;
+  console.log(zoomscale);
   adjustCanvas();
 }
 setTimeout(sliderChangeRes,1000); 
@@ -84,3 +86,7 @@ setTimeout(adjustCanvas,1200);
   animation_working = !animation_working;
   document.getElementById("button_toggleanimation").innerHTML = animation_working ? "Disable Current Flow" : "Enable Current Flow";
 })();
+
+function iOS() {
+  return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+}
