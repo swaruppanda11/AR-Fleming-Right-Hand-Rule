@@ -46,7 +46,7 @@ function sliderChangeCurl() {
 setTimeout(sliderChangeCurl,500); 
 
 function sliderChangeRes() {
-  zoomscale = 1 + document_slider_resolution.value / 2.0;
+  zoomscale = 1 + document_slider_resolution.value / 10.0;
   adjustCanvas();
 }
 setTimeout(sliderChangeRes,1000); 
