@@ -9,7 +9,7 @@ let videoWH = 1;
 let videoScale = 1;
 let camera_rotation = 0;
 
-
+// making use of this function for using the video of the right hand rule
 videoElement.addEventListener('loadedmetadata', (event) => {
   first_time_setup = false;
   videoWH = videoElement.videoWidth / videoElement.videoHeight;
